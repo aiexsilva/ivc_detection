@@ -135,8 +135,8 @@ while True:
     player_score_text = FONT.render(str(player_score), True, "white")
     opponent_score_text = FONT.render(str(opponent_score), True, "white")
 
-    ball.x += x_speed * 20
-    ball.y += y_speed * 20
+    ball.x += x_speed * 15
+    ball.y += y_speed * 15
 
     SCREEN.fill("Black")
 
@@ -156,4 +156,4 @@ while True:
     cv2.ocl.setUseOpenCL(True)
 
     pygame.display.update()
-    CLOCK.tick(60)
+    CLOCK.tick(300)

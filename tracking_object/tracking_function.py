@@ -37,7 +37,7 @@ def object_tracking(capture):
 
     #detect only once per second
     if current_time - last_detection_time >= 0.5:
-        results = model(frame, agnostic_nms=True, stream=True, classes=[32, 67])
+        results = model(frame, agnostic_nms=True, stream=True, classes=[32, 67], verbose=False)
         for result in results:
             annotated_frame = result.plot()
             for box in result.boxes:
