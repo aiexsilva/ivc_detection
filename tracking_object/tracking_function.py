@@ -32,8 +32,8 @@ def object_tracking(capture):
     current_time = time.time()
 
     # can't detect a object so, paddles do not move
-    top = (None,None)
-    top2 = (None, None)
+    center = (None, None)
+    center2 = (None, None)
 
     #detect only once per second
     if current_time - last_detection_time >= 0.5:
@@ -46,14 +46,14 @@ def object_tracking(capture):
 
                 x, y, w, h = box.xywh[0].cpu().numpy()
                 if class_name == 'cell phone':
-                    #use the top of the boundBox to control the paddle
-                    top = (int(x + w / 2), int(y))
+                    #use the center of the boundBox to control the paddle
+                    center = (int(x + w / 2), int(y + (h / 2)))
                 if class_name == 'sports ball':
-                    top2 = (int(x + w / 2), int(y))
+                    center2 = (int(x + w / 2), int(y + (h / 2)))
 
             cv2.imshow("YOLO Inference", annotated_frame)
 
         # update the last detection time
         last_detection_time = current_time
 
-    return frame, top, top2
+    return frame, center, center2

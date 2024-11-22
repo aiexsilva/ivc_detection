@@ -72,7 +72,6 @@ def game_over_screen():
                     pygame.quit()
                     sys.exit()
 
-
 #game loop
 while True:
 
@@ -80,12 +79,18 @@ while True:
     elapsed_time = time.time() - start_time
 
     #object tracking
-    frame, top, top2 = object_tracking(capture)
+    frame, center, center2 = object_tracking(capture)
 
     #cellPhone paddle
-    if not (top[1] is None):
-        #offset the y value -50 so it reaches the top 
-        player.top = top[1] - 50
+    if not (center[1] is None):
+        if (center[1] > HEIGHT / 2 + (HEIGHT / 4) ):
+            player.centery = center[1]
+        if (HEIGHT / 2 + (HEIGHT / 4) > center[1] > HEIGHT / 2):
+            player.centery = center[1]
+        if (HEIGHT / 4 < center[1] < HEIGHT / 2):
+            player.centery = center[1]
+        if (center[1] < HEIGHT / 4):
+            player.centery = center[1] - (center[1] * 0.5)
 
     #confines paddle to camera bounds
     if player.top < 0:
@@ -94,8 +99,15 @@ while True:
         player.bottom = HEIGHT
 
     #sportsBall paddle
-    if not (top2[1] is None):
-        opponent.top = top2[1] - 50
+    if not (center2[1] is None):
+        if (center2[1] > HEIGHT / 2 + (HEIGHT / 4)):
+            opponent.centery = center2[1]
+        if (HEIGHT / 2 + (HEIGHT / 4) > center2[1] > HEIGHT / 2):
+            opponent.centery = center2[1]
+        if (HEIGHT / 4 < center2[1] < HEIGHT / 2):
+            opponent.centery = center2[1]
+        if (center2[1] < HEIGHT / 4):
+            opponent.centery = center2[1] - (center2[1] * 0.5)
 
     if opponent.top < 0:
         opponent.top = 0
