@@ -83,11 +83,7 @@ while True:
 
     #cellPhone paddle
     if not (center[1] is None):
-        if (center[1] > HEIGHT / 2 + (HEIGHT / 4) ):
-            player.centery = center[1]
-        if (HEIGHT / 2 + (HEIGHT / 4) > center[1] > HEIGHT / 2):
-            player.centery = center[1]
-        if (HEIGHT / 4 < center[1] < HEIGHT / 2):
+        if (center[1] > HEIGHT / 4):
             player.centery = center[1]
         if (center[1] < HEIGHT / 4):
             player.centery = center[1] - (center[1] * 0.5)
@@ -100,11 +96,7 @@ while True:
 
     #sportsBall paddle
     if not (center2[1] is None):
-        if (center2[1] > HEIGHT / 2 + (HEIGHT / 4)):
-            opponent.centery = center2[1]
-        if (HEIGHT / 2 + (HEIGHT / 4) > center2[1] > HEIGHT / 2):
-            opponent.centery = center2[1]
-        if (HEIGHT / 4 < center2[1] < HEIGHT / 2):
+        if (center2[1] > HEIGHT / 4):
             opponent.centery = center2[1]
         if (center2[1] < HEIGHT / 4):
             opponent.centery = center2[1] - (center2[1] * 0.5)
